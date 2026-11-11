@@ -85,7 +85,7 @@ while (salir == false)
             Console.WriteLine($"3. Grúa pluma de extracción (+50.00 €)");
             Console.WriteLine($"0. Terminar de añadir extras");
             Console.WriteLine($"Añade un extra (0-3): ");
-            string opcExtra = Console.ReadLine();
+            string opcExtra = Console.ReadLine()!;
 
             if (opcExtra == "0")
             {
@@ -127,11 +127,42 @@ while (salir == false)
                     contadorExtras++;
                     Console.WriteLine($"Extra añadido.");
                 }
-            }else
+            } else
             {
                 Console.WriteLine($"Opción fuera de rango.");
             }
         }
+
+        // Fase 4: Condición específica (horario)
+
+        double recargoHorario = 0;
+        string tipoHorario ="";
+        bool horarioValido = false;
+
+        while (horarioValido == false)
+        {
+            Console.WriteLine($"--- HORARIO DE ATENCIÓN ---");
+            Console.WriteLine($"1. Diurno (Sin recargo)");
+            Console.WriteLine($"2. Nocturno / Festivo (+20% sobre el servicio principal)");
+            Console.WriteLine($"Selecciona el horario (1-2): ");
+            string opcHorario = Console.ReadLine()!;
+
+            if (opcHorario == "1")
+            {
+                recargoHorario = 0;
+                tipoHorario = "Diurno";
+                horarioValido = true;
+            } else if (opcHorario == "2")
+            {
+                recargoHorario = precioServicio * 0.20;
+                tipoHorario = "Nocturno / Festivo";
+                horarioValido = true;
+            } else
+            {
+                Console.WriteLine("opción no válida.");
+            }
+        }
+
     }
  
 
