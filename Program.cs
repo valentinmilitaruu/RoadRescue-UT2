@@ -40,11 +40,12 @@ while (salir == false)
 
         while(servicioValido == false)
         {
+            Console.WriteLine("");
             Console.WriteLine($"--- SERVICIOS PRINCIPALES ---");
             Console.WriteLine($"1. Remolque urbano (50.00 €)");
             Console.WriteLine($"2. Rescate interurbano (80.00 €)");
             Console.WriteLine($"3. Reparación in situ (40.00 €)");
-            Console.WriteLine($"Selecciona el servicio (1-3): ");
+            Console.Write($"Selecciona el servicio (1-3): ");
             string opcServicio = Console.ReadLine()!;
 
             if (opcServicio == "1")
@@ -79,12 +80,13 @@ while (salir == false)
 
         while(finExtras == false)
         {
+            Console.WriteLine("");
             Console.WriteLine($"--- EXTRAS ---");
             Console.WriteLine($"1. Vehículo de sustitución (+30.00 €)");
             Console.WriteLine($"2. Custodia en depósito (+20.00 €)");
             Console.WriteLine($"3. Grúa pluma de extracción (+50.00 €)");
             Console.WriteLine($"0. Terminar de añadir extras");
-            Console.WriteLine($"Añade un extra (0-3): ");
+            Console.Write($"Añade un extra (0-3): ");
             string opcExtra = Console.ReadLine()!;
 
             if (opcExtra == "0")
@@ -141,10 +143,11 @@ while (salir == false)
 
         while (horarioValido == false)
         {
+            Console.WriteLine("");
             Console.WriteLine($"--- HORARIO DE ATENCIÓN ---");
             Console.WriteLine($"1. Diurno (Sin recargo)");
             Console.WriteLine($"2. Nocturno / Festivo (+20% sobre el servicio principal)");
-            Console.WriteLine($"Selecciona el horario (1-2): ");
+            Console.Write($"Selecciona el horario (1-2): ");
             string opcHorario = Console.ReadLine()!;
 
             if (opcHorario == "1")
@@ -186,7 +189,7 @@ while (salir == false)
         while (dineroEntregado < totalFinal)
         {
             Console.WriteLine($"Introduce el dinero entregado por el cliente:");
-            string entradaPago = Console.ReadLine();
+            string entradaPago = Console.ReadLine()!;
 
             if(entradaPago != "")
             {
@@ -210,6 +213,7 @@ while (salir == false)
 
         // Fase 7: Justificante
 
+        Console.WriteLine("");
         Console.WriteLine($"==============================");
         Console.WriteLine($"   TICKET DE ROAD RESCUE      ");
         Console.WriteLine($"==============================");
@@ -250,10 +254,36 @@ while (salir == false)
         Console.WriteLine($"===================================");
     } else if (opcionMenu == "2")
     {
-        
+        // Fase 8: Caja
+        Console.WriteLine("");
+        Console.WriteLine("====================================");
+        Console.WriteLine("    ESTADÍSTICAS DE LA CAJA         ");
+        Console.WriteLine("====================================");
+
+        if (operacionesCobradas == 0)
+        {
+            Console.WriteLine($"Aún no hay asistencias registradas en esta sesión.");
+        } else
+        {
+            double media = recaudacionTotal / operacionesCobradas;
+            Console.WriteLine($"Asistencais cobradas: {operacionesCobradas}");
+            Console.WriteLine($"Recaudación total: {recaudacionTotal} €");
+            Console.WriteLine($"Importe medio por asistencia: {media} €");
+            Console.WriteLine($"Servicio más caro: {importeMasCaro} € (Cliente: {clienteMasCaro})");      
+
+        }
+        Console.WriteLine("====================================");
+
+    } else if (opcionMenu == "3")
+    {
+        Console.WriteLine($"Cerrando sistema Road Rescue. ¡Buen Turno!");
+        if (operacionesCobradas < 0)
+        {
+            Console.WriteLine($"Resumen final del turno: {operacionesCobradas} asistencias realizadas. Total ingresos: {recaudacionTotal} €");
+        }
+        salir = true;
+    } else
+    {
+        Console.WriteLine($"Opción no válida. Por favor, introduce 1, 2 o 3.");
     }
-
-
- 
-
 }
