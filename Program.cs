@@ -208,8 +208,51 @@ while (salir == false)
             clienteMasCaro = cliente;
         }
 
-    
-    }   
+        // Fase 7: Justificante
+
+        Console.WriteLine($"==============================");
+        Console.WriteLine($"   TICKET DE ROAD RESCUE      ");
+        Console.WriteLine($"==============================");
+        Console.WriteLine($"Nº Operación: {operacionesCobradas}");
+        Console.WriteLine($"Cliente: {cliente}");
+        Console.WriteLine($"Servicio: {nombreServicio} ({precioServicio} €)");
+        Console.WriteLine($"Horario: {cliente} (+{recargoHorario}) €");
+
+        if (contadorExtras > 0)
+        {
+            Console.WriteLine($"Extras ({contadorExtras}):");
+            if (tieneVehiculoSustitucion)
+            {
+                Console.WriteLine($" - Vehículo sustitución (30.00€)");
+            }
+            if (tieneCustodia)
+            {
+                Console.WriteLine($" - Custodia en depósito (20.00€)");
+            }
+            if (tieneGruaPluma)
+            {
+                Console.WriteLine($" - Grúa pluma (50.00€)");
+            }
+        } else
+        {
+            Console.WriteLine($"Extras: Ninguno");
+        }
+
+        Console.WriteLine($"-----------------------------------");
+        Console.WriteLine($"Subtotal: {subtotal}€");
+        if (descuento > 0)
+        {
+            Console.WriteLine($"Descuento (10% por importe > 100€) -{descuento} €");
+        }
+        Console.WriteLine($"TOTAL: {totalFinal} €");
+        Console.WriteLine($"Entregado: {dineroEntregado} €");
+        Console.WriteLine($"Cambio: {cambio} €");
+        Console.WriteLine($"===================================");
+    } else if (opcionMenu == "2")
+    {
+        
+    }
+
 
  
 
