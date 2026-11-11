@@ -26,7 +26,7 @@ while (salir == false)
         {
             Console.Write($"Introduce el nombre del cliente: ");
             cliente = Console.ReadLine()!;
-            if(cliente == "")
+            if(cliente.Trim() == "")
             {
                 Console.WriteLine($"Error: El nombre no puede estar vacío.");
             }
@@ -181,7 +181,7 @@ while (salir == false)
         {
             totalFinal = 0;
         }
-        Console.WriteLine($"TOTAL A CBORAR: {totalFinal.ToString("F2")} €");
+        Console.WriteLine($"TOTAL A COBRAR: {totalFinal.ToString("F2")} €");
 
         // Fase 6: Cobro 
 
@@ -249,7 +249,7 @@ while (salir == false)
             Console.WriteLine($"Descuento (10% por importe > 100€) -{descuento.ToString("F2")} €");
         }
         Console.WriteLine($"TOTAL: {totalFinal.ToString("F2")} €");
-        Console.WriteLine($"Entregado: {dineroEntregado} €");
+        Console.WriteLine($"Entregado: {dineroEntregado.ToString("F2")} €");
         Console.WriteLine($"Cambio: {cambio.ToString("F2")} €");
         Console.WriteLine($"===================================");
     } else if (opcionMenu == "2")
@@ -266,7 +266,7 @@ while (salir == false)
         } else
         {
             double media = recaudacionTotal / operacionesCobradas;
-            Console.WriteLine($"Asistencais cobradas: {operacionesCobradas}");
+            Console.WriteLine($"Asistencias cobradas: {operacionesCobradas}");
             Console.WriteLine($"Recaudación total: {recaudacionTotal.ToString("F2")} €");
             Console.WriteLine($"Importe medio por asistencia: {media.ToString("F2")} €");
             Console.WriteLine($"Servicio más caro: {importeMasCaro.ToString("F2")} € (Cliente: {clienteMasCaro})");      
