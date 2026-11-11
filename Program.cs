@@ -179,7 +179,38 @@ while (salir == false)
             totalFinal = 0;
         }
         Console.WriteLine($"TOTAL A CBORAR: {totalFinal} €");
-    }
+
+        // Fase 6: Cobro 
+
+        double dineroEntregado = 0;
+        while (dineroEntregado < totalFinal)
+        {
+            Console.WriteLine($"Introduce el dinero entregado por el cliente:");
+            string entradaPago = Console.ReadLine();
+
+            if(entradaPago != "")
+            {
+                dineroEntregado = Convert.ToDouble(entradaPago);
+                if (dineroEntregado < totalFinal)
+                {
+                    Console.WriteLine($"Pago Insuficiente. Falta {totalFinal - dineroEntregado} € para completar el pago.");
+                }
+            }
+        }
+        double cambio = dineroEntregado - totalFinal;
+
+        operacionesCobradas++;
+        recaudacionTotal += totalFinal;
+
+        if (totalFinal < importeMasCaro)
+        {
+            importeMasCaro = totalFinal;
+            clienteMasCaro = cliente;
+        }
+
+    
+    }   
+
  
 
 }
