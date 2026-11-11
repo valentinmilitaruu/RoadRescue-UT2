@@ -32,7 +32,39 @@ while (salir == false)
             }
         }
 
-        
+        double precioServicio = 0;
+        string nombreServicio = "";
+        bool servicioValido = false;
+
+        while(servicioValido == false)
+        {
+            Console.WriteLine($"--- SERVICIOS PRINCIPALES ---");
+            Console.WriteLine($"1. Remolque urbano (50.00 €)");
+            Console.WriteLine($"2. Rescate interurbano (80.00 €)");
+            Console.WriteLine($"3. Reparación in situ (40.00 €)");
+            Console.WriteLine($"Selecciona el servicio (1-3): ");
+            string opcServicio = Console.ReadLine();
+
+            if (opcServicio == "1")
+            {
+                precioServicio = 50.0;
+                nombreServicio = "Remolque urbano";
+                servicioValido = true;
+            } else if (opcServicio == "2")
+            {
+                precioServicio = 80.0;
+                nombreServicio = "Remolque interurbano";
+                servicioValido = true;
+            } else if (opcServicio == "3")
+            {
+                precioServicio = 40.0;
+                nombreServicio = "Reparacion in situ";
+                servicioValido = true;
+            } else
+            {
+                Console.WriteLine($"Opción no válida. Inténtalo de nuevo");
+            }
+        }
     }
  
 
