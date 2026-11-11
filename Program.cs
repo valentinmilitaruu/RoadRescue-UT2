@@ -14,7 +14,7 @@ while (salir == false)
     Console.WriteLine($"1. Registrar nueva asistencia");
     Console.WriteLine($"2. Consultar caja");
     Console.WriteLine($"3. Salir");
-    Console.Write($"Elige una opción (1-3):");
+    Console.Write($"Elige una opción (1-3): ");
 
     string opcionMenu = Console.ReadLine()!;
 
@@ -24,7 +24,7 @@ while (salir == false)
         string cliente = "";
         while (cliente == "")
         {
-            Console.WriteLine($"Introduce el nombre del cliente: ");
+            Console.Write($"Introduce el nombre del cliente: ");
             cliente = Console.ReadLine()!;
             if(cliente == "")
             {
@@ -181,14 +181,14 @@ while (salir == false)
         {
             totalFinal = 0;
         }
-        Console.WriteLine($"TOTAL A CBORAR: {totalFinal} €");
+        Console.WriteLine($"TOTAL A CBORAR: {totalFinal.ToString("F2")} €");
 
         // Fase 6: Cobro 
 
         double dineroEntregado = 0;
         while (dineroEntregado < totalFinal)
         {
-            Console.WriteLine($"Introduce el dinero entregado por el cliente:");
+            Console.Write($"Introduce el dinero entregado por el cliente: ");
             string entradaPago = Console.ReadLine()!;
 
             if(entradaPago != "")
@@ -196,7 +196,7 @@ while (salir == false)
                 dineroEntregado = Convert.ToDouble(entradaPago);
                 if (dineroEntregado < totalFinal)
                 {
-                    Console.WriteLine($"Pago Insuficiente. Falta {totalFinal - dineroEntregado} € para completar el pago.");
+                    Console.WriteLine($"Pago Insuficiente. Falta {(totalFinal - dineroEntregado).ToString("F2")} € para completar el pago.");
                 }
             }
         }
@@ -205,7 +205,7 @@ while (salir == false)
         operacionesCobradas++;
         recaudacionTotal += totalFinal;
 
-        if (totalFinal < importeMasCaro)
+        if (totalFinal > importeMasCaro)
         {
             importeMasCaro = totalFinal;
             clienteMasCaro = cliente;
@@ -219,8 +219,8 @@ while (salir == false)
         Console.WriteLine($"==============================");
         Console.WriteLine($"Nº Operación: {operacionesCobradas}");
         Console.WriteLine($"Cliente: {cliente}");
-        Console.WriteLine($"Servicio: {nombreServicio} ({precioServicio} €)");
-        Console.WriteLine($"Horario: {cliente} (+{recargoHorario}) €");
+        Console.WriteLine($"Servicio: {nombreServicio} ({precioServicio.ToString("F2")} €)");
+        Console.WriteLine($"Horario: {tipoHorario} (+{recargoHorario.ToString("F2")}) €");
 
         if (contadorExtras > 0)
         {
@@ -243,14 +243,14 @@ while (salir == false)
         }
 
         Console.WriteLine($"-----------------------------------");
-        Console.WriteLine($"Subtotal: {subtotal}€");
+        Console.WriteLine($"Subtotal: {subtotal.ToString("F2")}€");
         if (descuento > 0)
         {
-            Console.WriteLine($"Descuento (10% por importe > 100€) -{descuento} €");
+            Console.WriteLine($"Descuento (10% por importe > 100€) -{descuento.ToString("F2")} €");
         }
-        Console.WriteLine($"TOTAL: {totalFinal} €");
+        Console.WriteLine($"TOTAL: {totalFinal.ToString("F2")} €");
         Console.WriteLine($"Entregado: {dineroEntregado} €");
-        Console.WriteLine($"Cambio: {cambio} €");
+        Console.WriteLine($"Cambio: {cambio.ToString("F2")} €");
         Console.WriteLine($"===================================");
     } else if (opcionMenu == "2")
     {
@@ -267,9 +267,9 @@ while (salir == false)
         {
             double media = recaudacionTotal / operacionesCobradas;
             Console.WriteLine($"Asistencais cobradas: {operacionesCobradas}");
-            Console.WriteLine($"Recaudación total: {recaudacionTotal} €");
-            Console.WriteLine($"Importe medio por asistencia: {media} €");
-            Console.WriteLine($"Servicio más caro: {importeMasCaro} € (Cliente: {clienteMasCaro})");      
+            Console.WriteLine($"Recaudación total: {recaudacionTotal.ToString("F2")} €");
+            Console.WriteLine($"Importe medio por asistencia: {media.ToString("F2")} €");
+            Console.WriteLine($"Servicio más caro: {importeMasCaro.ToString("F2")} € (Cliente: {clienteMasCaro})");      
 
         }
         Console.WriteLine("====================================");
@@ -277,9 +277,9 @@ while (salir == false)
     } else if (opcionMenu == "3")
     {
         Console.WriteLine($"Cerrando sistema Road Rescue. ¡Buen Turno!");
-        if (operacionesCobradas < 0)
+        if (operacionesCobradas > 0)
         {
-            Console.WriteLine($"Resumen final del turno: {operacionesCobradas} asistencias realizadas. Total ingresos: {recaudacionTotal} €");
+            Console.WriteLine($"Resumen final del turno: {operacionesCobradas} asistencias realizadas. Total ingresos: {recaudacionTotal.ToString("F2")} €");
         }
         salir = true;
     } else
