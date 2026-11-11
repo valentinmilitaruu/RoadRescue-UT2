@@ -163,6 +163,22 @@ while (salir == false)
             }
         }
 
+        // Fase 5: Cálculos y Descuento
+
+        double subtotal = precioServicio + precioExtras + recargoHorario;
+        double descuento = 0;
+
+        if (subtotal > 100)
+        {
+            descuento = subtotal * 0.10;
+        }
+
+        double totalFinal = subtotal - descuento;
+        if (totalFinal < 0)
+        {
+            totalFinal = 0;
+        }
+        Console.WriteLine($"TOTAL A CBORAR: {totalFinal} €");
     }
  
 
